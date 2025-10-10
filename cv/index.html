@@ -12,27 +12,33 @@
   <header>
    
     <nav aria-label="Primary">
-      <a href="../index.html">Main</a>
-      <a href="../projects/index.html">Projects</a>
-      <a href="../contact/index.html">Contact</a>
-      <a href="index.html">CV/Resume</a>
-      <a href="https://github.com/ArtienVoskanian" target="_blank">Github</a>
+      <ul class="primary-nav">
+        <li><a href="../index.html">Main</a></li>
+        <li><a href="../contact/index.html">Contact</a></li>
+        <li><a href="../projects/index.html">Projects</a></li>
+        <li><a href="index.html" aria-current="page">CV/Resume</a></li>
+        <li><a href="https://github.com/ArtienVoskanian" target="_blank" rel="noopener noreferrer">Github</a></li>
+      </ul>
     </nav>
+
   </header>
 
   <main id="content">
-    <h1>Curriculum Vitae</h1>
+    
 
     
-    <section aria-labelledby="summary-heading">
-      <header>
-        <h2 id="summary-heading">Profile</h2>
-      </header>
-      <p>Data Science master’s student at UCSD with a biology background, focusing on healthcare + ML. Interested in NLP for clinical workflows.</p>
-      <p><a href="mailto:you@example.com">you@example.com</a> · <a href="https://github.com/yourhandle">github.com/yourhandle</a> · San Diego, CA</p>
+   
+
+    <section aria-labelledby="profile-h">
+      <header><h2 id="profile-h">Profile</h2></header>
+        <p>Data Science master’s student with a biology background focusing on healthcare + ML/NLP. Building reliable data workflows and analysis for clinical operations.</p>
+        <p class="meta">
+          <a href="mailto:you@example.com">you@example.com</a> ·
+          <a href="https://github.com/yourhandle" target="_blank" rel="noopener">github.com/yourhandle</a> ·
+          Los Angeles, CA
+        </p>
     </section>
 
-    
     <section aria-labelledby="edu-heading">
       <header>
         <h2 id="edu-heading">Education</h2>
@@ -63,6 +69,8 @@
       </article>
     </section>
 
+    
+
  
     <section aria-labelledby="exp-heading">
       <header>
@@ -83,7 +91,7 @@
 
       <article>
         <header>
-          <h3>Labortaory Technologist — Bioinformatics Lab</h3>
+          <h3>Laboratory Technologist — Bioinformatics Lab</h3>
           <p><time datetime="2019-06">Jun 2017</time> – <time datetime="2024-05">May 2024</time></p>
         </header>
         <ul>

@@ -1,0 +1,463 @@
+body {
+  /* Set line height to 1.5 times the font size
+	   and use the OS’s UI font as the website font
+	 */
+  font: 100%/1.5 system-ui;
+}
+
+body {
+  max-width: 100ch;          /* scales with font size; feels great for reading */
+  margin-inline: auto;       /* centers the page content */
+  padding-inline: 1rem;      /* keeps text off the edges on narrow screens */
+  /* optional: a little vertical breathing room */
+  padding-block: 1rem;
+}
+
+/* === Nav foundation === */
+:root {
+  /* Accent color (tweak to taste) */
+  --accent: oklch(62% 0.17 255); /* nice blue; fallback below if oklch unsupported */
+  /* fallback if needed:
+     --accent: #3b82f6;
+  */
+}
+
+.primary-nav {
+  /* Flatten the list so <a> act like direct children of <nav> */
+  display: contents;              /* modern browsers */
+}
+.primary-nav > li {
+  display: contents;
+}
+
+/* Make the <nav> itself a flex row so the <a> items line up horizontally */
+nav[aria-label="Primary"] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;               
+}
+
+/* Link resets & hit area */
+nav[aria-label="Primary"] a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid transparent;  /* we’ll reveal on active/hover */
+  border-radius: 0.5rem;
+}
+
+/* Current page link */
+nav[aria-label="Primary"] a[aria-current="page"],
+nav[aria-label="Primary"] a.current {
+  font-weight: 700;
+  border-color: var(--accent);
+}
+
+/* Hover/focus */
+nav[aria-label="Primary"] a:hover,
+nav[aria-label="Primary"] a:focus-visible {
+  background: color-mix(in oklab, var(--accent) 15%, white);
+  outline: none;
+  border-color: color-mix(in oklab, var(--accent) 60%, transparent);
+}
+
+/* Keyboard focus fallback if color-mix/oklab not supported */
+@supports not (background: color-mix(in oklab, white, black)) {
+  nav[aria-label="Primary"] a:hover,
+  nav[aria-label="Primary"] a:focus-visible {
+    background: rgba(59, 130, 246, 0.12); /* approx for #3b82f6 */
+    border-color: rgba(59, 130, 246, 0.6);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  nav[aria-label="Primary"] a {
+    transition: background 140ms, border-color 140ms;
+  }
+}
+
+/* Optional: logo spacing */
+.logo {
+  margin-right: 0.5rem;
+  font-weight: 700;
+}
+
+
+/* ===== Contact form layout (Step 3) ===== */
+.contact-form {
+  display: grid;
+  grid-template-columns: auto 1fr;   /* label column + control column */
+  gap: 0.75rem 1rem;                 /* row gap | column gap */
+  align-items: start;
+  max-width: 60rem;                  /* keeps the form reasonable inside your page width */
+}
+
+/* Wrap label + control in one grid row */
+.contact-form .field {
+  display: contents;                 /* keeps label wrapper semantic, but places children directly */
+}
+
+/* The visible label text in the first column */
+.contact-form .field .label {
+  grid-column: 1;
+  align-self: center;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Inputs/textarea in the second column */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  grid-column: 2;
+  font: inherit;                     /* inherit site font/size */
+  color: inherit;
+  background: white;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem 0.7rem;
+  border: 1.5px solid #d0d5dd;
+  border-radius: 0.5rem;
+}
+
+/* Spacing between stacked controls on small screens */
+.contact-form input + *,
+.contact-form textarea + * {
+  margin-top: 0.25rem;
+}
+
+/* Submit button takes full row width on the grid */
+.contact-form .submit {
+  grid-column: 1 / -1;               /* span both columns */
+  justify-self: start;               /* left-align */
+  font: inherit;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  background: var(--accent, #3b82f6);
+  color: white;
+}
+
+/* Focus styles for accessibility */
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible,
+.contact-form select:focus-visible,
+.contact-form .submit:focus-visible {
+  outline: none;
+  border-color: var(--accent, #3b82f6);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent, #3b82f6) 35%, white);
+}
+
+/* Hover button */
+.contact-form .submit:hover {
+  filter: brightness(1.05);
+}
+
+/* Stack nicely on narrow screens */
+@media (max-width: 36rem) {
+  .contact-form {
+    grid-template-columns: 1fr;      /* one column */
+  }
+  .contact-form .field .label,
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    grid-column: 1;
+  }
+}
+
+
+/* Hide only visually (still accessible to screen readers) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Projects grid */
+.projects {
+  /* Repeat as many columns as fit, minimum card width of ~15em */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1rem;
+  align-items: stretch; /* equal card heights across the row */
+}
+
+/* Card */
+.project {
+  display: grid;
+  /* Create internal rows: header | summary (flexible) | button */
+  grid-template-rows: auto 1fr auto;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+/* Optional image at top fills width */
+.project > img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  /* If you add an image, you can define rows as: auto auto 1fr auto */
+}
+
+/* Header inside card */
+.project-header {
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* Heading & link */
+.project h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+.project h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+.project h3 a:hover,
+.project h3 a:focus-visible {
+  text-decoration: underline;
+}
+
+/* Meta line under title (lighter) */
+.project .meta {
+  margin: 0;
+  color: #6b7280; /* gray-500 */
+  font-size: 0.9rem;
+}
+
+/* Summary flexes to fill space so button stays aligned at bottom */
+.project .summary {
+  margin: 0;
+}
+
+/* Call-to-action button sits at bottom of card */
+.project .cta {
+  justify-self: start;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  background: var(--accent, #3b82f6);
+  color: #fff;
+}
+.project .cta:hover,
+.project .cta:focus-visible {
+  outline: none;
+  filter: brightness(1.05);
+}
+
+/* Slight elevation on hover (optional) */
+@media (prefers-reduced-motion: no-preference) {
+  .project {
+    transition: box-shadow 140ms, transform 140ms;
+  }
+  .project:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+  }
+}
+
+/* Small screens: cards naturally stack. No change needed. */
+
+/* Parent defines columns */
+.projects { grid-auto-rows: 1fr; }
+
+/* Inside each card, reuse rows/columns with subgrid (progressive enhancement) */
+@supports (grid-template-rows: subgrid) {
+  .project {
+    display: grid;
+    grid-template-rows: subgrid; /* reuse the parent track sizing */
+  }
+}
+
+/* ===== CV: page typography & rhythm ===== */
+main {
+  display: grid;
+  gap: 1.25rem;      /* vertical rhythm between blocks */
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 { font-size: clamp(1.6rem, 2.5vw + 1rem, 2.25rem); }
+h2 { font-size: 1.25rem; margin-top: 1rem; }
+h3 { font-size: 1.05rem; }
+
+p { margin: 0.25rem 0 0.5rem; }
+ul { margin: 0.25rem 0 0.75rem 1.25rem; }
+li { margin-block: 0.25rem; }
+
+/* Section spacing */
+main > section {
+  padding-block: 0.25rem 0.75rem;
+  border-top: 1px solid #eee;
+}
+main > section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Section header block */
+section > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Small meta text helper */
+.meta {
+  color: #6b7280;    /* gray-500 */
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ===== CV: timeline layout for Experience/Education ===== */
+.cv-timeline {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cv-item {
+  display: grid;
+  grid-template-columns: 10ch 1fr;  /* dates | content */
+  gap: 0.75rem 1rem;
+}
+
+.cv-item time {
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cv-item header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+}
+
+.cv-item h3 { margin: 0; }
+.cv-item .place { color: #6b7280; }
+
+/* Bulleted accomplishments under each role */
+.cv-item ul {
+  margin: 0.25rem 0 0.5rem 1rem;
+}
+
+/* Stack on small screens */
+@media (max-width: 40rem) {
+  .cv-item { grid-template-columns: 1fr; }
+  .cv-item time { order: -1; } /* show dates above the role on narrow screens */
+}
+
+/* ===== CV: link badges (optional) ===== */
+.badges {
+  display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; margin: 0.25rem 0;
+}
+.badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  text-decoration: none;
+}
+
+/* ===== Print-friendly tweaks ===== */
+@media print {
+  :root { color-scheme: light; }
+  body { max-width: none; padding: 0; }
+  header nav, .logo, .primary-nav { display: none !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #6b7280; }
+  .badge::after { content: ""; } /* don't print URLs on tiny badges */
+  main > section { break-inside: avoid; }
+}
+
+/* ===== CV: base rhythm & headings ===== */
+main { display: grid; gap: 1.25rem; }
+
+h1, h2, h3 { margin: 0; line-height: 1.2; }
+h1 { font-size: clamp(1.6rem, 2.5vw + 1rem, 2.25rem); }
+h2 { font-size: 1.25rem; margin-top: 0.25rem; }
+h3 { font-size: 1.05rem; }
+
+p { margin: 0.25rem 0 0.5rem; }
+ul { margin: 0.25rem 0 0.75rem 1.25rem; }
+li { margin-block: 0.25rem; }
+
+/* Section separators (subtle) */
+main > section { padding-block: 0.25rem 0.75rem; border-top: 1px solid #eee; }
+main > section:first-of-type { border-top: none; padding-top: 0; }
+
+/* Section headers align heading + meta (if any) */
+section > header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 1rem; margin-bottom: 0.5rem;
+}
+
+.meta { color: #6b7280; font-size: 0.9rem; margin: 0; }
+
+/* ===== CV: timeline layout for entries ===== */
+.cv-list { display: grid; gap: 0.75rem; }
+
+.cv-item {
+  display: grid;
+  grid-template-columns: 12ch 1fr;  /* dates | content */
+  gap: 0.75rem 1rem;
+}
+
+.cv-item time {
+  color: #6b7280;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.cv-item header {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.75rem;
+}
+
+/* Smaller screens: stack */
+@media (max-width: 40rem) {
+  .cv-item { grid-template-columns: 1fr; }
+  .cv-item time { order: -1; }
+}
+
+/* Print-friendly tweaks (optional but handy) */
+@media print {
+  body { max-width: none; padding: 0; }
+  header nav, .primary-nav, .logo { display: none !important; }
+  main > section { break-inside: avoid; }
+}
+
+/* Center the image and prevent overflow */
+.hero { 
+  display: flex;               /* lets us center the child */
+  justify-content: center; 
+  margin-block: 1rem 2rem;
+}
+
+.hero img {
+  display: block;              /* remove inline whitespace */
+  max-width: 200%;             /* never exceed the page width */
+  height: auto;                /* keep aspect ratio */
+  /* Optional: constrain maximum rendered size */
+  width: clamp(24rem, 90vw, 80rem);
+}

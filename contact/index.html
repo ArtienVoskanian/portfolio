@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <h1>Contact</h1>
 
     <nav aria-label="Primary">
-        <a href="../index.html">Main</a>
-        <a href="index.html">Contact</a>
-        <a href="../projects/index.html">Projects</a>
-        <a href="../cv/index.html">CV/Resume</a>
-        <a href="https://github.com/ArtienVoskanian" target="_blank">Github</a>
+      <ul class="primary-nav">
+        <li><a href="../index.html">Main</a></li>
+        <li><a href="index.html" aria-current="page">Contact</a></li>
+        <li><a href="../projects/index.html">Projects</a></li>
+        <li><a href="../cv/index.html">CV/Resume</a></li>
+        <li><a href="https://github.com/ArtienVoskanian" target="_blank" rel="noopener noreferrer">Github</a></li>
+      </ul>
     </nav>
+
 
     <!DOCTYPE html>
 <html lang="en">
@@ -24,26 +28,27 @@
   <title>Contact</title>
 </head>
 <body>
-  <h1>Contact</h1>
+  
 
-  <form action="mailto:you@example.com" method="POST" enctype="text/plain">
-    <label>
-      Email
-      <input name="email" type="email" required autocomplete="email" />
-    </label>
 
-    <label>
-      Subject
-      <input name="subject" />
-    </label>
+  <form class="contact-form" action="mailto:you@example.com" method="POST" enctype="text/plain">
+  <label class="field">
+    <span class="label">email</span>
+    <input name="email" type="email" required autocomplete="email" />
+  </label>
 
-    <label>
-      Body
-      <textarea name="body" rows="3" required></textarea>
-    </label>
+  <label class="field">
+    <span class="label">subject</span>
+    <input name="subject" />
+  </label>
 
-    <button>Send</button>
-  </form>
+  <label class="field">
+    <span class="label">body</span>
+    <textarea name="body" rows="6" required></textarea>
+  </label>
+
+  <button class="submit">Send</button>
+</form>
     
 </body>
 </html>
