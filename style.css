@@ -461,3 +461,22 @@ section > header {
   /* Optional: constrain maximum rendered size */
   width: clamp(24rem, 90vw, 80rem);
 }
+
+
+:root {
+  /* Allow the browser/OS to pick light or dark automatically */
+  color-scheme: light dark;
+}
+
+/* JS will toggle this attribute on <html> */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"]  { color-scheme: dark; }
+
+/* Optional: tidy the control on the right side of the nav */
+nav .theme-ctl {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: inherit;
+}
