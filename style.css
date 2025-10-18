@@ -480,3 +480,55 @@ nav .theme-ctl {
   gap: 8px;
   font: inherit;
 }
+
+html {
+  color-scheme: light dark;        /* auto light/dark */
+  background: canvas;
+  color: canvastext;
+}
+
+
+nav {
+  --color-accent: oklch(60% 0.12 210);           /* your accent base */
+  --border-color: oklch(50% 0.1 200 / 40%);      /* adaptive-ish in dark mode */
+
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+nav a {
+  display: inline-block;             /* so bg-color is visible */
+  padding: 0.25rem 0.5rem;
+  text-decoration: none;
+  color: currentColor;               /* follows canvastext */
+  border-radius: 0.375rem;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+
+/* Optional: hover bg from Lab 2, fixed via color-mix + canvas */
+nav a:hover {
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+}
+
+/* Keyboard focus should also be obvious */
+nav a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+
+/* From your Step 3.2 work; pick one style you like */
+nav a.current,
+nav a[aria-current="page"] {
+  font-weight: 700;
+  background-color: color-mix(in oklch, var(--color-accent), canvas 90%);
+}
+
+/* Still allow a subtle hover change on current link */
+nav a.current:hover,
+nav a[aria-current="page"]:hover {
+  background-color: color-mix(in oklch, var(--color-accent), canvas 80%);
+}
