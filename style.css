@@ -532,3 +532,40 @@ nav a.current:hover,
 nav a[aria-current="page"]:hover {
   background-color: color-mix(in oklch, var(--color-accent), canvas 80%);
 }
+
+
+/* --- GitHub profile stats --- */
+#profile-stats {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 0.75rem;
+}
+
+#profile-stats h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.25rem;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* four equal columns */
+  column-gap: 1rem;
+  row-gap: 0.25rem;
+  align-items: end;
+}
+
+#profile-stats dt {
+  grid-row: 1;                 /* all labels on the first row */
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
+}
+
+#profile-stats dd {
+  grid-row: 2;                 /* all values on the second row */
+  margin: 0;                   /* remove default dd margin */
+  font-size: 1.5rem;
+  font-weight: 700;
+}

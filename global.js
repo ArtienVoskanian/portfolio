@@ -108,3 +108,52 @@ themeSelect.addEventListener("change", (e) => {
   applyColorScheme(mode);
 });
 
+export async function fetchJSON(url) {
+  try {
+    // Fetch the JSON file from the given URL
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+  }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  if (!containerElement) return;
+  containerElement.innerHTML = '';
+
+  const validHeadings = new Set(['h1','h2','h3','h4','h5','h6']);
+  const tag = validHeadings.has(headingLevel) ? headingLevel : 'h2';
+
+  const list = Array.isArray(projects) ? projects : (projects ? [projects] : []);
+  if (list.length === 0) {
+    containerElement.innerHTML = '<p>No projects to show.</p>';
+    return;
+  }
+
+  for (const project of list) {
+    const article = document.createElement('article');
+
+    const title = project?.title ?? 'Untitled project';
+    const imageHTML = project?.image ? `<img src="${project.image}" alt="${title}">` : '';
+    const desc = project?.description ?? '';
+
+    article.innerHTML = `
+      <${tag}>${title}</${tag}>
+      ${imageHTML}
+      <p>${desc}</p>
+    `;
+
+    containerElement.appendChild(article);
+  }
+}
+
+// global.js
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${username}`);
+}

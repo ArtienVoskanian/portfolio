@@ -1,0 +1,74 @@
+[
+    {
+        "title": "Portfolio",
+        "year": 2025,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Check out how this website was made!"
+    },
+    {
+        "title": "Crowdfunding ETL",
+        "year": 2024,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Running nuanceds analytics on Crowdfunded ventures."
+    },
+    {
+        "title": "Home Sales",
+        "year": 2024,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Diving Deep in the history of Home Sales in the US"
+    },
+    {
+        "title": "Deep Learning Exercise",
+        "year": 2024,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Discovering the challenging and rewarding nature of deep learning."
+    },
+    {
+        "title": "Credit Risk Classification",
+        "year": 2024,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Applying supervised learning models to credit risk classification problems."
+    },
+    {
+        "title": "Crypto Clustering",
+        "year": 2024,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Discovering insights through Crypto data."
+    },
+    {
+        "title": "Leaflet Challenge",
+        "year": 2024,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Uncovering trends with geo spatial data via Leaflet"
+    },
+    {
+        "title": "Belly button Challenge",
+        "year": 2024,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Excercise in creating interactive visualizations and dashboards that capture viewer attention."
+    },
+    {
+        "title": "SQL Alchemy Challenge",
+        "year": 2024,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Querying weather data via sqlAlchemy and cleaned/plotted through pandas/matplotlib respectively."
+    },
+    {
+        "title": "Data Visualization Challenge",
+        "year": 2023,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Analying and visualizing the results of a study involving experimental treatments for squamous cell carcinoma."
+    },
+    {
+        "title": "World Weather Analysis",
+        "year": 2023,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Analyzing Global climate trends through weather data gathered over the last century "
+    },
+    {
+        "title": "Pandas Challenge",
+        "year": 2023,
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Comparingt student performance from two school distracts via pandas. Data cleaning/processing essentials applied."
+    }
+]
