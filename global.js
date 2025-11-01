@@ -140,11 +140,19 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     const article = document.createElement('article');
 
     const title = project?.title ?? 'Untitled project';
-    const imageHTML = project?.image ? `<img src="${project.image}" alt="${title}">` : '';
+    const year = project?.year ? String(project.year) : ''; // Step 0.1 addition
+    const imageHTML = project?.image
+      ? `<img src="${project.image}" alt="${title}">`
+      : '';
     const desc = project?.description ?? '';
 
+    // If we have a year, show "Title (Year)". Otherwise just Title.
+    const headingHTML = year
+      ? `${title} <span class="meta">(${year})</span>`
+      : title;
+
     article.innerHTML = `
-      <${tag}>${title}</${tag}>
+      <${tag}>${headingHTML}</${tag}>
       ${imageHTML}
       <p>${desc}</p>
     `;
@@ -152,6 +160,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     containerElement.appendChild(article);
   }
 }
+
 
 // global.js
 export async function fetchGitHubData(username) {

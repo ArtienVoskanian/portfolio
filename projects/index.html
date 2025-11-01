@@ -8,7 +8,33 @@
 </head>
 <body>
 
-    <h1 class = "projects-title">Projects</h1>
+<h1 class="projects-title">Projects</h1>
+
+<div class="projects-summary">
+  <svg id="projects-pie-plot" viewBox="-50 -50 100 100"></svg>
+  <div id="projects-legend" class="projects-legend"></div>
+</div>
+
+<p class="chart-caption">
+  Each wedge shows how many projects were created in that year.
+  Click a slice or legend item to filter the list below. Type in the search box to refine further.
+</p>
+
+<!-- Search/filter control -->
+<div class="projects-controls">
+  <label for="project-search" class="projects-search-label">
+    Search projects:
+  </label>
+  <input
+    id="project-search"
+    class="projects-search-input"
+    type="search"
+    placeholder="type to filter by title or description…"
+  />
+</div>
+
+<div class="projects"></div>
+
 
     <!-- <nav aria-label="Primary">
         <ul class="primary-nav">
@@ -84,6 +110,11 @@
         <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
         <p>Praesentium fugit quas asperiores debitis dolor, enim inventore nemo quidem veniam error pariatur magni? Dolores unde dolor ipsam quasi, quas rem inventore reprehenderit distinctio, alias eos quos, magnam officia enim.</p>
     </article> -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+<!-- Inline script that draws the circle with D3 -->
+
+
     <script src="../global.js" type="module"></script>
     <script src="projects.js" type="module"></script>
   </div>
