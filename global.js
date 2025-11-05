@@ -13,6 +13,7 @@ let pages = [
   { url: "contact/", title: "Contact" },
   { url: "cv/", title: "CV/Resume" },
   { url: "https://github.com/ArtienVoskanian", title: "Github" },
+  { url: "meta/", title: "Meta" },
 ];
 
 // 3.1.b BASE_PATH for local vs GitHub Pages
