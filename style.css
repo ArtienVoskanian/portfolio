@@ -685,3 +685,102 @@ nav a[aria-current="page"]:hover {
   stroke: canvastext;
   stroke-width: 2px;
 }
+
+/* Summary stats block */
+.stats {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: .25rem 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 1rem auto;
+  background: var(--panel, #fafafa);
+}
+.stats dt {
+  font-weight: 600;
+  color: var(--text-2, #333);
+}
+.stats dd {
+  margin: 0;
+  color: var(--text, #111);
+}
+.stats abbr[title] {
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
+
+/* light horizontal gridlines for the scatter */
+.gridlines line { stroke: currentColor; stroke-opacity: .15; shape-rendering: crispEdges; }
+.gridlines path { display: none; }
+
+/* Reusable info list */
+dl.info {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: .25rem 1rem;
+  margin: 0;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border, #ddd);
+  border-radius: .75rem;
+  background: var(--panel, rgba(255,255,255,.9));
+  box-shadow: 0 6px 24px rgba(0,0,0,.1);
+  transition-duration: 300ms;
+  transition-property: opacity, visibility, transform;
+}
+dl.info dt { font-weight: 600; opacity: .8; }
+dl.info dd { margin: 0; }
+
+/* Tooltip behavior */
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 10;
+  backdrop-filter: blur(6px);
+}
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Dot hover animation */
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+circle:hover,
+circle:focus-visible {
+  transform: scale(1.5);
+  outline: none;
+}
+
+/* force light tooltip regardless of theme */
+dl.info.tooltip {
+  background: #fff;
+  color: #111;
+  border-color: #d9d9d9;
+  backdrop-filter: none;          /* optional */
+}
+
+.dots circle { vector-effect: non-scaling-stroke; }
+
+/* Brush rectangle (“marching ants”) */
+@keyframes marching-ants { to { stroke-dashoffset: -8; } }
+.selection {
+  fill-opacity: 0.1;
+  stroke: currentColor;
+  stroke-opacity: .7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+/* Selected dots pop out */
+.dots circle.selected {
+  fill: #ff6b6b;
+  stroke: currentColor;
+  stroke-width: 1;
+}

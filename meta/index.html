@@ -1,13 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Meta · Code Summary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Optional: set this to your GitHub "user/repo" to enable commit links in Step 1.2 -->
+    <!-- <meta name="github-repo" content="YOUR_USER/YOUR_REPO"> -->
 
-<h1 class="projects-title">Meta</h1>
-<p> This page includes stats about the code of this website</p>
+    <!-- Your site CSS -->
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      /* Lightweight safety net in case style.css doesn't have .stats yet */
+      #stats { max-width: 900px; margin: 2rem auto; }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Meta: Project Summary</h1>
+      <h2>Commits by time of day</h2>
+      <div id="chart"></div>
+      <p id="selection-count">No commits selected</p>
+      <dl id="language-breakdown" class="stats"></dl>
+      <dl id="commit-tooltip" class="info tooltip" hidden>
+      <dt>Commit</dt>
+      <dd><a href="" id="commit-link" target="_blank" rel="noopener noreferrer"></a></dd>
 
+      <dt>Date</dt>
+      <dd id="commit-date"></dd>
+
+      <dt>Time</dt>
+      <dd id="commit-time"></dd>
+
+      <dt>Author</dt>
+      <dd id="commit-author"></dd>
+
+      <dt>Lines edited</dt>
+      <dd id="commit-lines"></dd>
+     </dl>
+
+      <!-- Step 1.1 placeholder -->
+      <div id="stats"></div>
+      
+    </main>
+
+    <!-- Step 1 script (ES module so we can use top-level await) -->
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="../global.js"></script>
+  </body>
+</html>
